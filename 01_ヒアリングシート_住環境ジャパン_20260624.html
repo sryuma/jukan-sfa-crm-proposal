@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>住環境ジャパン様 SFA/CRM構築 ヒアリングシート</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic", sans-serif; max-width: 980px; margin: 40px auto; padding: 0 24px; color: #1a1a1a; line-height: 1.7; background: #fafafa; }
+  header { border-bottom: 3px solid #1a3a6b; padding-bottom: 20px; margin-bottom: 30px; }
+  h1 { font-size: 26px; margin: 0 0 8px; color: #1a3a6b; }
+  .meta { color: #666; font-size: 13px; }
+  h2 { background: #1a3a6b; color: #fff; padding: 10px 16px; font-size: 17px; margin: 36px 0 16px; border-radius: 4px; }
+  h3 { color: #1a3a6b; font-size: 15px; margin: 24px 0 10px; padding-left: 10px; border-left: 4px solid #1a3a6b; }
+  .priority { display: inline-block; padding: 2px 10px; border-radius: 12px; font-size: 12px; font-weight: bold; margin-left: 8px; }
+  .pri-high { background: #d9534f; color: #fff; }
+  .pri-mid { background: #f0ad4e; color: #fff; }
+  .pri-low { background: #5bc0de; color: #fff; }
+  table { border-collapse: collapse; width: 100%; background: #fff; margin: 12px 0; }
+  th, td { border: 1px solid #ddd; padding: 10px 12px; text-align: left; vertical-align: top; }
+  th { background: #f0f4fa; color: #1a3a6b; font-weight: 600; font-size: 13px; width: 32%; }
+  td { font-size: 14px; min-height: 28px; }
+  .answer-row td:last-child { background: #fffef4; min-height: 40px; height: 40px; }
+  .note { background: #f8f9fa; border-left: 4px solid #6c757d; padding: 10px 14px; font-size: 13px; color: #555; margin: 10px 0; border-radius: 0 4px 4px 0; }
+  .check { background: #fff; padding: 12px 16px; border: 1px solid #ddd; border-radius: 4px; margin: 8px 0; }
+  .check label { display: block; margin: 6px 0; font-size: 14px; }
+  .footer-section { margin-top: 40px; padding: 20px; background: #fff; border: 1px solid #ddd; border-radius: 4px; }
+  .scope-tag { display: inline-block; padding: 3px 10px; border-radius: 4px; font-size: 11px; font-weight: bold; margin-right: 6px; }
+  .must { background: #d9534f; color: #fff; }
+  .want { background: #f0ad4e; color: #fff; }
+  .nice { background: #5bc0de; color: #fff; }
+  ul { padding-left: 20px; }
+  .summary-box { background: #eef4fb; border: 1px solid #b8d4f0; padding: 16px 20px; border-radius: 6px; margin: 20px 0; }
+  .summary-box h4 { margin: 0 0 8px; color: #1a3a6b; font-size: 14px; }
+  .summary-box p { margin: 4px 0; font-size: 13px; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>住環境ジャパン様 SFA/CRM構築 ヒアリングシート</h1>
+  <div class="meta">
+    作成日：2026-06-24 ／ 実施予定：2026年6月末〜7月初週 ／ ヒアリング想定時間：30〜60分<br>
+    主催：株式会社剣（住田、本山、荒谷）／ 紹介元：橋本秀也 様（AI研修先）
+  </div>
+</header>
+
+<div class="summary-box">
+  <h4>ヒアリングの目的</h4>
+  <p>1. 住環境ジャパン様のSFA/CRM構築要件をシンプルに把握する</p>
+  <p>2. Goofy提案案（300〜1000万円・6ヶ月）に対する剣の対案（より安価＋実装伴走）の精度を上げる</p>
+  <p>3. 7月10日（Goofy本提案日）の前に判断材料をお渡しする</p>
+</div>
+
+<div class="summary-box">
+  <h4>剣のスタンス（事前共有）</h4>
+  <p>・<b>Goofy案より安価に</b>：Salesforce前提＋コンサル中抜きを外せば相当圧縮可能</p>
+  <p>・<b>「作って終わり」ではなく実装まで伴走</b>：AI研修でお付き合いしているからこそ、現場で使い切れる状態まで責任もって伴走</p>
+</div>
+
+<h2>1. 基本情報</h2>
+<table>
+  <tr class="answer-row"><th>会社名</th><td>住環境ジャパン株式会社</td></tr>
+  <tr class="answer-row"><th>ご担当者・参加者</th><td></td></tr>
+  <tr class="answer-row"><th>事業概要・主力商品</th><td></td></tr>
+  <tr class="answer-row"><th>従業員数 / 営業人数</th><td></td></tr>
+  <tr class="answer-row"><th>拠点数・エリア</th><td></td></tr>
+  <tr class="answer-row"><th>主要顧客層（BtoB / BtoC比率）</th><td></td></tr>
+  <tr class="answer-row"><th>直近の売上規模・中期目標</th><td>中長期：3年で売上100億（既知）</td></tr>
+</table>
+
+<h2>2. 現状のデータ・ツール状況</h2>
+
+<h3>2-1. OB顧客データ（最重要） <span class="priority pri-high">最優先</span></h3>
+<table>
+  <tr class="answer-row"><th>OB顧客の総件数</th><td>約20万件（既知）</td></tr>
+  <tr class="answer-row"><th>データの保存場所（紙／Excel／システム名）</th><td></td></tr>
+  <tr class="answer-row"><th>データ形式・項目（氏名・連絡先・施工日・商品種別など）</th><td></td></tr>
+  <tr class="answer-row"><th>名寄せ・重複の状況</th><td></td></tr>
+  <tr class="answer-row"><th>連絡先の到達率（電話／メール／LINE／DM）</th><td></td></tr>
+  <tr class="answer-row"><th>過去のアプローチ履歴の有無</th><td></td></tr>
+  <tr class="answer-row"><th>同意取得状況（個人情報利用・マーケ送信）</th><td></td></tr>
+</table>
+
+<h3>2-2. 既存ツール・契約状況</h3>
+<table>
+  <tr class="answer-row"><th>Salesforce</th><td>利用中 ／ 未契約 ／ 検討中（どれか・契約条件）</td></tr>
+  <tr class="answer-row"><th>Andpad</th><td>利用中 ／ 用途・利用範囲</td></tr>
+  <tr class="answer-row"><th>Freee</th><td>利用中 ／ 用途・連携状況</td></tr>
+  <tr class="answer-row"><th>Lark</th><td>移行検討中 ／ 現状のコミュニケーション基盤</td></tr>
+  <tr class="answer-row"><th>その他のSaaS（MA、SFA、メール配信等）</th><td></td></tr>
+  <tr class="answer-row"><th>各ツールの年間契約コスト合計</th><td></td></tr>
+</table>
+
+<h3>2-3. ツール選定の柔軟性 <span class="priority pri-high">重要</span></h3>
+<table>
+  <tr class="answer-row"><th>Salesforceでなければ困る理由はあるか</th><td></td></tr>
+  <tr class="answer-row"><th>HubSpot / kintone / Zoho等の代替案も検討余地ありか</th><td></td></tr>
+  <tr class="answer-row"><th>Larkへの移行は確定 / 検討中 / 未定</th><td></td></tr>
+</table>
+
+<h2>3. 業務オペレーション・課題</h2>
+
+<h3>3-1. 営業現場の現状</h3>
+<table>
+  <tr class="answer-row"><th>1日の営業活動の流れ（リード→商談→受注→施工→アフター）</th><td></td></tr>
+  <tr class="answer-row"><th>営業のボトルネック（どの工程で時間がかかっているか）</th><td></td></tr>
+  <tr class="answer-row"><th>トップ営業と平均の差はどこに出ているか</th><td></td></tr>
+  <tr class="answer-row"><th>営業日報・活動記録の運用状況</th><td></td></tr>
+  <tr class="answer-row"><th>営業録音は現在記録しているか／どの形式か</th><td></td></tr>
+</table>
+
+<h3>3-2. やりたいこと（優先順）</h3>
+<table>
+  <tr><th>テーマ</th><th>優先度</th><th>具体イメージ</th></tr>
+  <tr><td>OB顧客掘り起こし（MA自動化）</td><td><span class="scope-tag must">MUST</span></td><td>設置後10年/20年タイミング自動アプローチ</td></tr>
+  <tr><td>営業録音→CRM保存／同意管理</td><td><span class="scope-tag must">MUST</span></td><td>コンプライアンス強化・規制対応</td></tr>
+  <tr><td>SFA／顧客一元管理</td><td><span class="scope-tag must">MUST</span></td><td>1回入力で全部に流れる</td></tr>
+  <tr class="answer-row"><td>AI営業分析（トップ営業の勝ちパターン）</td><td><span class="scope-tag want">WANT</span></td><td></td></tr>
+  <tr class="answer-row"><td>提案サジェスト（誰に・いつ・何を）</td><td><span class="scope-tag want">WANT</span></td><td></td></tr>
+  <tr class="answer-row"><td>Andpad / Freee API連携</td><td><span class="scope-tag want">WANT</span></td><td></td></tr>
+  <tr class="answer-row"><td>Lark移行・統合</td><td><span class="scope-tag nice">NICE</span></td><td></td></tr>
+  <tr class="answer-row"><td>その他（自由記入）</td><td></td><td></td></tr>
+</table>
+
+<h2>4. 制約条件</h2>
+<table>
+  <tr class="answer-row"><th>想定予算（初期 / 月額）</th><td>Goofy提示：初期300〜1000万、6ヶ月（参考）</td></tr>
+  <tr class="answer-row"><th>稼働開始希望時期</th><td></td></tr>
+  <tr class="answer-row"><th>意思決定者・決裁プロセス</th><td></td></tr>
+  <tr class="answer-row"><th>セキュリティ・個人情報の要件（ISMS、Pマーク等）</th><td></td></tr>
+  <tr class="answer-row"><th>社内のIT人材（運用に回せる人）の有無</th><td></td></tr>
+  <tr class="answer-row"><th>既に契約済の他社サービス・解約条件</th><td></td></tr>
+</table>
+
+<h2>5. Goofy提案との比較ポイント</h2>
+<table>
+  <tr class="answer-row"><th>Goofy提案の見積詳細（内訳・スコープ）</th><td>事前に資料共有いただきたい</td></tr>
+  <tr class="answer-row"><th>Goofyに惹かれた点</th><td></td></tr>
+  <tr class="answer-row"><th>Goofyに不安な点</th><td></td></tr>
+  <tr class="answer-row"><th>剣に期待する点</th><td></td></tr>
+</table>
+
+<h2>6. 伴走支援（剣の差別化）</h2>
+<table>
+  <tr class="answer-row"><th>構築後の運用イメージ（誰が触るか）</th><td></td></tr>
+  <tr class="answer-row"><th>定例ミーティング・伴走の希望頻度</th><td>剣推奨：月2回 〜 週1回</td></tr>
+  <tr class="answer-row"><th>AI研修との連動希望（社員教育・ナレッジ蓄積）</th><td></td></tr>
+  <tr class="answer-row"><th>3年後の理想状態（売上100億時の業務イメージ）</th><td></td></tr>
+</table>
+
+<div class="footer-section">
+  <h3 style="margin-top:0;">ヒアリング後のアクション（短縮スケジュール）</h3>
+  <ul>
+    <li>6/25〜6/27：ヒアリング実施（30〜60分・1回）</li>
+    <li>6/28〜7/1：剣サイドで要件整理 → ツール選定／概算見積／スケジュール案作成</li>
+    <li>7/1（火）：提案書・見積を橋本社長へ提出</li>
+    <li>7/10（木）：Goofy本提案と比較・判断</li>
+    <li>7/11（金）：契約締結・キックオフ → Phase 1 要件定義開始</li>
+    <li>11月初旬：全機能本番リリース → 11/10〜 運用伴走スタート</li>
+  </ul>
+  <h3>連絡先</h3>
+  <p>株式会社剣 代表取締役 住田 隆真<br>
+  本社：東京都渋谷区桜丘町31-14 SLACK SHIBUYA 301</p>
+</div>
+
+</body>
+</html>

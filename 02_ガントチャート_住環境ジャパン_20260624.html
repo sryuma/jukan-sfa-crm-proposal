@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>住環境ジャパン様 SFA/CRM構築 プロジェクトスケジュール</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic", sans-serif; margin: 30px; color: #1a1a1a; background: #fafafa; line-height: 1.6; }
+  header { border-bottom: 3px solid #1a3a6b; padding-bottom: 16px; margin-bottom: 24px; }
+  h1 { color: #1a3a6b; font-size: 24px; margin: 0 0 6px; }
+  .meta { color: #666; font-size: 13px; }
+  h2 { color: #1a3a6b; font-size: 17px; margin: 32px 0 12px; padding-bottom: 6px; border-bottom: 2px solid #1a3a6b; }
+  .summary-box { background: #eef4fb; border: 1px solid #b8d4f0; padding: 16px 20px; border-radius: 6px; margin: 16px 0; }
+  .summary-box p { margin: 4px 0; font-size: 13px; }
+  .summary-box b { color: #1a3a6b; }
+  .alert { background: #fff3cd; border: 1px solid #f0ad4e; padding: 14px 18px; border-radius: 6px; margin: 16px 0; font-size: 13px; color: #856404; }
+  .alert b { color: #6b4d00; }
+
+  .gantt-wrapper { overflow-x: auto; background: #fff; border: 1px solid #ddd; border-radius: 4px; padding: 0; }
+  table.gantt { border-collapse: collapse; width: 100%; min-width: 1200px; font-size: 12px; }
+  table.gantt th, table.gantt td { border: 1px solid #e0e0e0; padding: 4px 6px; vertical-align: middle; }
+  table.gantt thead th { background: #1a3a6b; color: #fff; font-weight: 600; }
+  table.gantt thead .week-header { background: #2a4a7b; font-size: 11px; }
+  table.gantt thead .month-header { background: #1a3a6b; font-size: 12px; }
+  table.gantt .task-name { background: #f6f8fc; min-width: 260px; font-weight: 500; }
+  table.gantt .owner { background: #f6f8fc; min-width: 100px; font-size: 11px; text-align: center; }
+  table.gantt .phase-row td { background: #1a3a6b; color: #fff; font-weight: 600; padding: 6px 8px; font-size: 13px; }
+  table.gantt .week-cell { width: 36px; height: 28px; text-align: center; position: relative; padding: 0; }
+  .bar { position: absolute; top: 6px; left: 2px; right: 2px; bottom: 6px; border-radius: 3px; }
+  .bar-hearing { background: linear-gradient(135deg, #5cb85c, #449d44); }
+  .bar-proposal { background: linear-gradient(135deg, #f0ad4e, #ec971f); }
+  .bar-contract { background: linear-gradient(135deg, #d9534f, #c9302c); }
+  .bar-phase1 { background: linear-gradient(135deg, #5bc0de, #31b0d5); }
+  .bar-phase2 { background: linear-gradient(135deg, #6f42c1, #5a32a3); }
+  .bar-phase3 { background: linear-gradient(135deg, #fd7e14, #e8590c); }
+  .bar-phase4 { background: linear-gradient(135deg, #20c997, #169f7e); }
+  .bar-ops { background: linear-gradient(135deg, #1a3a6b, #2a4a7b); }
+  .milestone { width: 16px; height: 16px; background: #d9534f; transform: rotate(45deg); margin: auto; border-radius: 2px; }
+
+  .legend { display: flex; gap: 14px; flex-wrap: wrap; margin: 12px 0 24px; }
+  .legend-item { display: flex; align-items: center; gap: 6px; font-size: 12px; }
+  .legend-box { width: 18px; height: 12px; border-radius: 2px; }
+
+  table.summary { border-collapse: collapse; width: 100%; margin: 16px 0; background: #fff; }
+  table.summary th, table.summary td { border: 1px solid #ddd; padding: 10px 14px; text-align: left; font-size: 13px; vertical-align: top; }
+  table.summary th { background: #f0f4fa; color: #1a3a6b; width: 22%; font-weight: 600; }
+
+  .phase-detail { margin: 20px 0; padding: 16px 20px; background: #fff; border: 1px solid #ddd; border-radius: 4px; }
+  .phase-detail h3 { color: #1a3a6b; margin: 0 0 10px; font-size: 15px; }
+  .phase-detail ul { margin: 6px 0; padding-left: 22px; font-size: 13px; }
+  .phase-detail .deliverable { background: #f8f9fa; padding: 8px 12px; border-left: 4px solid #1a3a6b; margin-top: 8px; font-size: 12px; }
+
+  .risk { background: #fff3cd; border-left: 4px solid #f0ad4e; padding: 10px 16px; margin: 8px 0; font-size: 13px; border-radius: 0 4px 4px 0; }
+  .compare-table { background: #fff; }
+  .compare-table th { background: #1a3a6b; color: #fff; }
+  .compare-table .tsurugi { background: #eef9f0; }
+  .compare-table .goofy { background: #faf0f0; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>住環境ジャパン様 SFA/CRM構築 プロジェクトスケジュール</h1>
+  <div class="meta">
+    作成日：2026-06-24 ／ 株式会社剣 ／ 基準日：2026-06-24<br>
+    全体期間：約4.5ヶ月（営業フェーズ含む）+ 運用伴走（継続）
+  </div>
+</header>
+
+<div class="summary-box">
+  <p><b>プロジェクト方針：</b>Goofy提案（約6ヶ月）より大幅に短縮、かつ「作って終わり」ではなく実装まで伴走する</p>
+  <p><b>クリティカルマイルストーン：</b>7/1 提案書提出 → 7/10 Goofy本提案と比較 → 7/11 契約締結 → 11月初旬 全機能本番リリース</p>
+  <p><b>体制：</b>住田（PM）／ 荒谷CTO（技術統括）／ 本山（開発責任者・実装）／ 吉田（IS・進行管理）／ 塩田（契約・経理）</p>
+</div>
+
+<div class="alert">
+  <b>Goofy案との比較：</b>Goofy案は構築6ヶ月、剣案は構築4ヶ月（運用伴走11月開始）。理由：①ツール選定の最適化で実装工数圧縮 ②スコープを「MUST」優先で段階リリース ③社内伴走体制が初動から並走（要件定義の手戻りを減らす）
+</div>
+
+<h2>プロジェクトフェーズ概要</h2>
+<table class="summary">
+  <tr><th>Phase 0：営業フェーズ</th><td>6/24 〜 7/1（1週間）<br>ヒアリング → 提案 → 契約締結（7/10 Goofy本提案後）</td></tr>
+  <tr><th>Phase 1：要件定義・設計</th><td>7/11 〜 7/24（2週間）<br>ツール最終選定／データ移行設計／要件定義書</td></tr>
+  <tr><th>Phase 2：CRM/SFA基盤構築</th><td>7/25 〜 8/24（1ヶ月）<br>CRM基盤実装／OB顧客データ移行／API連携</td></tr>
+  <tr><th>Phase 3：MA・自動化実装</th><td>8/25 〜 10/9（1.5ヶ月）<br>掘り起こしシナリオ／MA自動配信／営業録音同意管理</td></tr>
+  <tr><th>Phase 4：AI活用機能</th><td>10/10 〜 11/9（1ヶ月）<br>営業録音分析／勝ちパターン抽出／提案サジェスト</td></tr>
+  <tr><th>Phase 5：運用伴走</th><td>11/10 〜 継続<br>月次定例／改善PDCA／AI研修と連動</td></tr>
+</table>
+
+<h2>ガントチャート（週次ベース）</h2>
+<div class="legend">
+  <div class="legend-item"><div class="legend-box bar-hearing"></div>ヒアリング</div>
+  <div class="legend-item"><div class="legend-box bar-proposal"></div>提案・見積</div>
+  <div class="legend-item"><div class="legend-box bar-contract"></div>契約</div>
+  <div class="legend-item"><div class="legend-box bar-phase1"></div>Phase 1 要件定義</div>
+  <div class="legend-item"><div class="legend-box bar-phase2"></div>Phase 2 基盤構築</div>
+  <div class="legend-item"><div class="legend-box bar-phase3"></div>Phase 3 MA実装</div>
+  <div class="legend-item"><div class="legend-box bar-phase4"></div>Phase 4 AI活用</div>
+  <div class="legend-item"><div class="legend-box bar-ops"></div>Phase 5 運用伴走</div>
+  <div class="legend-item"><div class="milestone" style="display:inline-block; width:12px; height:12px;"></div>マイルストーン</div>
+</div>
+
+<div class="gantt-wrapper">
+<table class="gantt">
+  <thead>
+    <tr class="month-header">
+      <th rowspan="2">タスク</th>
+      <th rowspan="2">担当</th>
+      <th>6月</th>
+      <th colspan="4">7月</th>
+      <th colspan="4">8月</th>
+      <th colspan="5">9月</th>
+      <th colspan="4">10月</th>
+      <th colspan="2">11月</th>
+      <th>継続</th>
+    </tr>
+    <tr class="week-header">
+      <th>W4</th>
+      <th>W1</th><th>W2</th><th>W3</th><th>W4</th>
+      <th>W1</th><th>W2</th><th>W3</th><th>W4</th>
+      <th>W1</th><th>W2</th><th>W3</th><th>W4</th><th>W5</th>
+      <th>W1</th><th>W2</th><th>W3</th><th>W4</th>
+      <th>W1</th><th>W2</th>
+      <th>〜</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="phase-row"><td colspan="23">Phase 0：営業フェーズ（6/24 〜 7/1 / 1週間）</td></tr>
+
+    <tr>
+      <td class="task-name">ヒアリング日程調整・実施</td>
+      <td class="owner">住田・本山</td>
+      <td class="week-cell"><div class="bar bar-hearing"></div></td>
+      <td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td>
+      <td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td>
+      <td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td>
+      <td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td>
+      <td class="week-cell"></td><td class="week-cell"></td>
+      <td class="week-cell"></td>
+    </tr>
+
+    <tr>
+      <td class="task-name">要件整理・ツール比較・提案書作成</td>
+      <td class="owner">荒谷・本山・住田</td>
+      <td class="week-cell"><div class="bar bar-proposal"></div></td>
+      <td class="week-cell"><div class="bar bar-proposal"></div></td>
+      <td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td>
+      <td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td>
+      <td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td>
+      <td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td>
+      <td class="week-cell"></td><td class="week-cell"></td>
+      <td class="week-cell"></td>
+    </tr>
+
+    <tr>
+      <td class="task-name">★7/1 提案書・見積提出</td>
+      <td class="owner">住田</td>
+      <td class="week-cell"></td>
+      <td class="week-cell"><div class="milestone"></div></td>
+      <td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td>
+      <td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td>
+      <td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td>
+      <td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td>
+      <td class="week-cell"></td><td class="week-cell"></td>
+      <td class="week-cell"></td>
+    </tr>
+
+    <tr>
+      <td class="task-name">★7/10 Goofy本提案 vs 剣案 判断</td>
+      <td class="owner">橋本社長</td>
+      <td class="week-cell"></td>
+      <td class="week-cell"></td>
+      <td class="week-cell"><div class="milestone"></div></td>
+      <td class="week-cell"></td><td class="week-cell"></td>
+      <td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td>
+      <td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td>
+      <td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td>
+      <td class="week-cell"></td><td class="week-cell"></td>
+      <td class="week-cell"></td>
+    </tr>
+
+    <tr>
+      <td class="task-name">契約締結・キックオフ</td>
+      <td class="owner">住田・塩田</td>
+      <td class="week-cell"></td>
+      <td class="week-cell"></td>
+      <td class="week-cell"><div class="bar bar-contract"></div></td>
+      <td class="week-cell"></td><td class="week-cell"></td>
+      <td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td>
+      <td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td>
+      <td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td>
+      <td class="week-cell"></td><td class="week-cell"></td>
+      <td class="week-cell"></td>
+    </tr>
+
+    <tr class="phase-row"><td colspan="23">Phase 1：要件定義・設計（7/11 〜 7/24 / 2週間）</td></tr>
+
+    <tr>
+      <td class="task-name">ツール最終選定（CRM/SFA/MA）</td>
+      <td class="owner">荒谷・本山</td>
+      <td class="week-cell"></td>
+      <td class="week-cell"></td>
+      <td class="week-cell"><div class="bar bar-phase1"></div></td>
+      <td class="week-cell"></td><td class="week-cell"></td>
+      <td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td>
+      <td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td>
+      <td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td>
+      <td class="week-cell"></td><td class="week-cell"></td>
+      <td class="week-cell"></td>
+    </tr>
+
+    <tr>
+      <td class="task-name">業務フロー棚卸し・要件定義書</td>
+      <td class="owner">本山・住田</td>
+      <td class="week-cell"></td>
+      <td class="week-cell"></td>
+      <td class="week-cell"><div class="bar bar-phase1"></div></td>
+      <td class="week-cell"><div class="bar bar-phase1"></div></td>
+      <td class="week-cell"></td>
+      <td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td>
+      <td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td>
+      <td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td>
+      <td class="week-cell"></td><td class="week-cell"></td>
+      <td class="week-cell"></td>
+    </tr>
+
+    <tr>
+      <td class="task-name">OB顧客データ クレンジング設計</td>
+      <td class="owner">本山</td>
+      <td class="week-cell"></td>
+      <td class="week-cell"></td>
+      <td class="week-cell"></td>
+      <td class="week-cell"><div class="bar bar-phase1"></div></td>
+      <td class="week-cell"></td>
+      <td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td>
+      <td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td>
+      <td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td>
+      <td class="week-cell"></td><td class="week-cell"></td>
+      <td class="week-cell"></td>
+    </tr>
+
+    <tr>
+      <td class="task-name">★要件定義レビュー・承認</td>
+      <td class="owner">橋本社長</td>
+      <td class="week-cell"></td>
+      <td class="week-cell"></td>
+      <td class="week-cell"></td>
+      <td class="week-cell"></td>
+      <td class="week-cell"><div class="milestone"></div></td>
+      <td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td>
+      <td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td>
+      <td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td>
+      <td class="week-cell"></td><td class="week-cell"></td>
+      <td class="week-cell"></td>
+    </tr>
+
+    <tr class="phase-row"><td colspan="23">Phase 2：CRM/SFA基盤構築（7/25 〜 8/24 / 1ヶ月）</td></tr>
+
+    <tr>
+      <td class="task-name">CRM/SFA環境構築</td>
+      <td class="owner">本山</td>
+      <td class="week-cell"></td>
+      <td class="week-cell"></td>
+      <td class="week-cell"></td>
+      <td class="week-cell"></td>
+      <td class="week-cell"><div class="bar bar-phase2"></div></td>
+      <td class="week-cell"><div class="bar bar-phase2"></div></td>
+      <td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td>
+      <td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td>
+      <td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td>
+      <td class="week-cell"></td><td class="week-cell"></td>
+      <td class="week-cell"></td>
+    </tr>
+
+    <tr>
+      <td class="task-name">OB顧客20万件データ移行</td>
+      <td class="owner">本山・荒谷</td>
+      <td class="week-cell"></td>
+      <td class="week-cell"></td>
+      <td class="week-cell"></td>
+      <td class="week-cell"></td>
+      <td class="week-cell"></td>
+      <td class="week-cell"><div class="bar bar-phase2"></div></td>
+      <td class="week-cell"><div class="bar bar-phase2"></div></td>
+      <td class="week-cell"></td><td class="week-cell"></td>
+      <td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td>
+      <td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td>
+      <td class="week-cell"></td><td class="week-cell"></td>
+      <td class="week-cell"></td>
+    </tr>
+
+    <tr>
+      <td class="task-name">Andpad / Freee API連携</td>
+      <td class="owner">本山</td>
+      <td class="week-cell"></td>
+      <td class="week-cell"></td>
+      <td class="week-cell"></td>
+      <td class="week-cell"></td>
+      <td class="week-cell"></td>
+      <td class="week-cell"></td>
+      <td class="week-cell"><div class="bar bar-phase2"></div></td>
+      <td class="week-cell"><div class="bar bar-phase2"></div></td>
+      <td class="week-cell"></td>
+      <td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td>
+      <td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td>
+      <td class="week-cell"></td><td class="week-cell"></td>
+      <td class="week-cell"></td>
+    </tr>
+
+    <tr>
+      <td class="task-name">★基盤UATリリース</td>
+      <td class="owner">本山・橋本社長</td>
+      <td class="week-cell"></td>
+      <td class="week-cell"></td>
+      <td class="week-cell"></td>
+      <td class="week-cell"></td>
+      <td class="week-cell"></td>
+      <td class="week-cell"></td>
+      <td class="week-cell"></td>
+      <td class="week-cell"></td>
+      <td class="week-cell"><div class="milestone"></div></td>
+      <td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td>
+      <td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td>
+      <td class="week-cell"></td><td class="week-cell"></td>
+      <td class="week-cell"></td>
+    </tr>
+
+    <tr class="phase-row"><td colspan="23">Phase 3：MA・自動化実装（8/25 〜 10/9 / 1.5ヶ月）</td></tr>
+
+    <tr>
+      <td class="task-name">掘り起こしシナリオ設計（10年/20年タイミング）</td>
+      <td class="owner">住田・本山</td>
+      <td class="week-cell"></td>
+      <td class="week-cell"></td>
+      <td class="week-cell"></td>
+      <td class="week-cell"></td>
+      <td class="week-cell"></td>
+      <td class="week-cell"></td>
+      <td class="week-cell"></td>
+      <td class="week-cell"></td>
+      <td class="week-cell"><div class="bar bar-phase3"></div></td>
+      <td class="week-cell"><div class="bar bar-phase3"></div></td>
+      <td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td>
+      <td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td>
+      <td class="week-cell"></td><td class="week-cell"></td>
+      <td class="week-cell"></td>
+    </tr>
+
+    <tr>
+      <td class="task-name">MA自動配信（メール/SMS/LINE）構築</td>
+      <td class="owner">本山</td>
+      <td class="week-cell"></td>
+      <td class="week-cell"></td>
+      <td class="week-cell"></td>
+      <td class="week-cell"></td>
+      <td class="week-cell"></td>
+      <td class="week-cell"></td>
+      <td class="week-cell"></td>
+      <td class="week-cell"></td>
+      <td class="week-cell"></td>
+      <td class="week-cell"></td>
+      <td class="week-cell"><div class="bar bar-phase3"></div></td>
+      <td class="week-cell"><div class="bar bar-phase3"></div></td>
+      <td class="week-cell"><div class="bar bar-phase3"></div></td>
+      <td class="week-cell"></td>
+      <td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td>
+      <td class="week-cell"></td><td class="week-cell"></td>
+      <td class="week-cell"></td>
+    </tr>
+
+    <tr>
+      <td class="task-name">営業録音→CRM保存／同意管理</td>
+      <td class="owner">本山・荒谷</td>
+      <td class="week-cell"></td>
+      <td class="week-cell"></td>
+      <td class="week-cell"></td>
+      <td class="week-cell"></td>
+      <td class="week-cell"></td>
+      <td class="week-cell"></td>
+      <td class="week-cell"></td>
+      <td class="week-cell"></td>
+      <td class="week-cell"></td>
+      <td class="week-cell"></td>
+      <td class="week-cell"></td>
+      <td class="week-cell"></td>
+      <td class="week-cell"><div class="bar bar-phase3"></div></td>
+      <td class="week-cell"><div class="bar bar-phase3"></div></td>
+      <td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td>
+      <td class="week-cell"></td><td class="week-cell"></td>
+      <td class="week-cell"></td>
+    </tr>
+
+    <tr>
+      <td class="task-name">★MA運用開始・初回キャンペーン</td>
+      <td class="owner">住田・橋本社長</td>
+      <td class="week-cell"></td>
+      <td class="week-cell"></td>
+      <td class="week-cell"></td>
+      <td class="week-cell"></td>
+      <td class="week-cell"></td>
+      <td class="week-cell"></td>
+      <td class="week-cell"></td>
+      <td class="week-cell"></td>
+      <td class="week-cell"></td>
+      <td class="week-cell"></td>
+      <td class="week-cell"></td>
+      <td class="week-cell"></td>
+      <td class="week-cell"></td>
+      <td class="week-cell"><div class="milestone"></div></td>
+      <td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td>
+      <td class="week-cell"></td><td class="week-cell"></td>
+      <td class="week-cell"></td>
+    </tr>
+
+    <tr class="phase-row"><td colspan="23">Phase 4：AI活用機能実装（10/10 〜 11/9 / 1ヶ月）</td></tr>
+
+    <tr>
+      <td class="task-name">営業録音の文字起こし・ベクトル化</td>
+      <td class="owner">荒谷・本山</td>
+      <td class="week-cell"></td>
+      <td class="week-cell"></td>
+      <td class="week-cell"></td>
+      <td class="week-cell"></td>
+      <td class="week-cell"></td>
+      <td class="week-cell"></td>
+      <td class="week-cell"></td>
+      <td class="week-cell"></td>
+      <td class="week-cell"></td>
+      <td class="week-cell"></td>
+      <td class="week-cell"></td>
+      <td class="week-cell"></td>
+      <td class="week-cell"></td>
+      <td class="week-cell"></td>
+      <td class="week-cell"><div class="bar bar-phase4"></div></td>
+      <td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td>
+      <td class="week-cell"></td><td class="week-cell"></td>
+      <td class="week-cell"></td>
+    </tr>
+
+    <tr>
+      <td class="task-name">トップ営業 勝ちパターン抽出AI</td>
+      <td class="owner">荒谷</td>
+      <td class="week-cell"></td>
+      <td class="week-cell"></td>
+      <td class="week-cell"></td>
+      <td class="week-cell"></td>
+      <td class="week-cell"></td>
+      <td class="week-cell"></td>
+      <td class="week-cell"></td>
+      <td class="week-cell"></td>
+      <td class="week-cell"></td>
+      <td class="week-cell"></td>
+      <td class="week-cell"></td>
+      <td class="week-cell"></td>
+      <td class="week-cell"></td>
+      <td class="week-cell"></td>
+      <td class="week-cell"></td>
+      <td class="week-cell"><div class="bar bar-phase4"></div></td>
+      <td class="week-cell"><div class="bar bar-phase4"></div></td>
+      <td class="week-cell"></td>
+      <td class="week-cell"></td><td class="week-cell"></td>
+      <td class="week-cell"></td>
+    </tr>
+
+    <tr>
+      <td class="task-name">提案サジェストAI（誰に・いつ・何を）</td>
+      <td class="owner">荒谷・本山</td>
+      <td class="week-cell"></td>
+      <td class="week-cell"></td>
+      <td class="week-cell"></td>
+      <td class="week-cell"></td>
+      <td class="week-cell"></td>
+      <td class="week-cell"></td>
+      <td class="week-cell"></td>
+      <td class="week-cell"></td>
+      <td class="week-cell"></td>
+      <td class="week-cell"></td>
+      <td class="week-cell"></td>
+      <td class="week-cell"></td>
+      <td class="week-cell"></td>
+      <td class="week-cell"></td>
+      <td class="week-cell"></td>
+      <td class="week-cell"></td>
+      <td class="week-cell"><div class="bar bar-phase4"></div></td>
+      <td class="week-cell"><div class="bar bar-phase4"></div></td>
+      <td class="week-cell"></td><td class="week-cell"></td>
+      <td class="week-cell"></td>
+    </tr>
+
+    <tr>
+      <td class="task-name">★全機能本番リリース</td>
+      <td class="owner">本山・橋本社長</td>
+      <td class="week-cell"></td>
+      <td class="week-cell"></td>
+      <td class="week-cell"></td>
+      <td class="week-cell"></td>
+      <td class="week-cell"></td>
+      <td class="week-cell"></td>
+      <td class="week-cell"></td>
+      <td class="week-cell"></td>
+      <td class="week-cell"></td>
+      <td class="week-cell"></td>
+      <td class="week-cell"></td>
+      <td class="week-cell"></td>
+      <td class="week-cell"></td>
+      <td class="week-cell"></td>
+      <td class="week-cell"></td>
+      <td class="week-cell"></td>
+      <td class="week-cell"></td>
+      <td class="week-cell"></td>
+      <td class="week-cell"><div class="milestone"></div></td>
+      <td class="week-cell"></td>
+      <td class="week-cell"></td>
+    </tr>
+
+    <tr class="phase-row"><td colspan="23">Phase 5：運用伴走（11/10 〜 継続）</td></tr>
+
+    <tr>
+      <td class="task-name">月次定例 / AI研修と連動した運用伴走</td>
+      <td class="owner">住田・本山</td>
+      <td class="week-cell"></td>
+      <td class="week-cell"></td>
+      <td class="week-cell"></td>
+      <td class="week-cell"></td>
+      <td class="week-cell"></td>
+      <td class="week-cell"></td>
+      <td class="week-cell"></td>
+      <td class="week-cell"></td>
+      <td class="week-cell"></td>
+      <td class="week-cell"></td>
+      <td class="week-cell"></td>
+      <td class="week-cell"></td>
+      <td class="week-cell"></td>
+      <td class="week-cell"></td>
+      <td class="week-cell"></td>
+      <td class="week-cell"></td>
+      <td class="week-cell"></td>
+      <td class="week-cell"></td>
+      <td class="week-cell"></td>
+      <td class="week-cell"><div class="bar bar-ops"></div></td>
+      <td class="week-cell"><div class="bar bar-ops"></div></td>
+    </tr>
+
+  </tbody>
+</table>
+</div>
+
+<h2>フェーズ別の詳細</h2>
+
+<div class="phase-detail">
+  <h3>Phase 0：営業フェーズ（6/24 〜 7/1 / 1週間）</h3>
+  <ul>
+    <li>ヒアリング（30〜60分・1回）</li>
+    <li>剣サイドで要件整理・ツール比較・概算見積</li>
+    <li>提案書ドラフト → 7/1（火）橋本社長へ提出</li>
+    <li>7/10（木）Goofy本提案と比較・判断 → 7/11 契約締結</li>
+  </ul>
+  <div class="deliverable"><b>成果物：</b>ヒアリングシート記入版／提案書／概算見積／契約書ドラフト</div>
+</div>
+
+<div class="phase-detail">
+  <h3>Phase 1：要件定義・設計（7/11 〜 7/24 / 2週間）</h3>
+  <ul>
+    <li>ツール最終選定（Salesforce vs HubSpot vs kintone等の比較検証）</li>
+    <li>業務フロー棚卸し（リード→商談→受注→施工→アフター）</li>
+    <li>OB顧客20万件のクレンジング設計・名寄せルール策定</li>
+    <li>要件定義書のレビュー・承認</li>
+  </ul>
+  <div class="deliverable"><b>成果物：</b>ツール選定報告書／業務フロー図／要件定義書／データ移行計画書</div>
+</div>
+
+<div class="phase-detail">
+  <h3>Phase 2：CRM/SFA基盤構築（7/25 〜 8/24 / 1ヶ月）</h3>
+  <ul>
+    <li>CRM/SFA環境構築・初期セットアップ</li>
+    <li>OB顧客20万件のデータ移行（クレンジング → インポート → 検証）</li>
+    <li>Andpad / Freee API連携（1回入力で全体に流れる構成）</li>
+    <li>UAT実施・受入テスト</li>
+  </ul>
+  <div class="deliverable"><b>成果物：</b>CRM/SFA本番環境／データ移行済DB／API連携／UAT合格報告</div>
+</div>
+
+<div class="phase-detail">
+  <h3>Phase 3：MA・自動化実装（8/25 〜 10/9 / 1.5ヶ月）</h3>
+  <ul>
+    <li>掘り起こしシナリオ設計（設置後10年/20年タイミングでの自動アプローチ）</li>
+    <li>MA自動配信構築（メール／SMS／LINE）</li>
+    <li>営業録音→CRM保存／同意管理ワークフロー</li>
+    <li>初回キャンペーン実行・効果測定</li>
+  </ul>
+  <div class="deliverable"><b>成果物：</b>MAシナリオ／自動配信／録音・同意管理／初回キャンペーンレポート</div>
+</div>
+
+<div class="phase-detail">
+  <h3>Phase 4：AI活用機能実装（10/10 〜 11/9 / 1ヶ月）</h3>
+  <ul>
+    <li>営業録音の文字起こし・ベクトル化</li>
+    <li>トップ営業の勝ちパターン抽出AI</li>
+    <li>提案サジェストAI（誰に・いつ・何を・どう）</li>
+    <li>全機能本番リリース・社員教育</li>
+  </ul>
+  <div class="deliverable"><b>成果物：</b>AI分析ダッシュボード／提案サジェスト機能／運用マニュアル／社員向け研修資料</div>
+</div>
+
+<div class="phase-detail">
+  <h3>Phase 5：運用伴走（11/10 〜 継続）</h3>
+  <ul>
+    <li>月次定例ミーティング（KPIレビュー・改善提案）</li>
+    <li>AI精度向上のための継続学習・運用最適化</li>
+    <li>剣のAI研修と連動した社員教育・ナレッジ蓄積</li>
+    <li>3年で売上100億を実現するための戦略支援</li>
+  </ul>
+  <div class="deliverable"><b>成果物：</b>月次レポート／改善提案／継続的なAI精度向上</div>
+</div>
+
+<h2>Goofy案との比較</h2>
+<table class="compare-table summary">
+  <tr><th>項目</th><th>Goofy案</th><th>剣案</th></tr>
+  <tr><th>全体期間</th><td class="goofy">約6ヶ月（構築のみ）</td><td class="tsurugi">約4ヶ月（構築）+ 運用伴走（継続）</td></tr>
+  <tr><th>初期費</th><td class="goofy">300〜1,000万円</td><td class="tsurugi">スコープ次第で大幅圧縮（ツール選定で半額目安）</td></tr>
+  <tr><th>主軸ツール</th><td class="goofy">Salesforce前提</td><td class="tsurugi">要件適合性で再選定（HubSpot/kintone等も検討）</td></tr>
+  <tr><th>AI活用設計</th><td class="goofy">基盤整備 → 後追いでAI活用</td><td class="tsurugi">最初からAI前提で設計</td></tr>
+  <tr><th>仲介マージン</th><td class="goofy">リプ経由のコンサル費が発生</td><td class="tsurugi">直接対応（中抜きなし）</td></tr>
+  <tr><th>納品後の運用</th><td class="goofy">基本的に構築完了で終了</td><td class="tsurugi">月次定例・AI研修と連動した継続伴走</td></tr>
+</table>
+
+<h2>リスクと留意点</h2>
+<div class="risk"><b>R1：</b>OB顧客データのクレンジング工数が想定を超える可能性 → ヒアリング時にサンプルデータを共有いただき、スケール感を事前確認</div>
+<div class="risk"><b>R2：</b>Salesforce継続要否の意思決定遅延 → 7/11契約締結直後の要件定義最初の論点として優先確定</div>
+<div class="risk"><b>R3：</b>Andpad/Freee APIの仕様制約 → Phase 1の最終週に技術調査を完了させ、Phase 2前にリスク確定</div>
+<div class="risk"><b>R4：</b>営業現場の運用定着 → 剣のAI研修と連動させ、月次定例で運用改善を継続（伴走の本領）</div>
+
+</body>
+</html>

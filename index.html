@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>住環境ジャパン様 SFA/CRM構築 プロジェクト | 株式会社剣</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic", sans-serif; max-width: 900px; margin: 40px auto; padding: 0 24px; color: #1a1a1a; line-height: 1.7; background: #fafafa; }
+  header { border-bottom: 3px solid #1a3a6b; padding-bottom: 20px; margin-bottom: 30px; }
+  h1 { color: #1a3a6b; font-size: 28px; margin: 0 0 8px; }
+  .meta { color: #666; font-size: 13px; }
+  h2 { color: #1a3a6b; font-size: 18px; margin: 32px 0 14px; padding-bottom: 6px; border-bottom: 2px solid #1a3a6b; }
+  .doc-card { display: block; padding: 20px 24px; background: #fff; border: 1px solid #ddd; border-radius: 6px; margin: 12px 0; text-decoration: none; color: inherit; transition: all 0.15s; }
+  .doc-card:hover { border-color: #1a3a6b; box-shadow: 0 4px 12px rgba(26,58,107,0.1); transform: translateY(-1px); }
+  .doc-card h3 { margin: 0 0 6px; color: #1a3a6b; font-size: 17px; }
+  .doc-card p { margin: 0; color: #666; font-size: 13px; }
+  .doc-card .arrow { float: right; color: #1a3a6b; font-size: 20px; }
+  table { border-collapse: collapse; width: 100%; background: #fff; margin: 12px 0; }
+  th, td { border: 1px solid #ddd; padding: 10px 14px; text-align: left; font-size: 13px; vertical-align: top; }
+  th { background: #f0f4fa; color: #1a3a6b; font-weight: 600; }
+  .summary-box { background: #eef4fb; border: 1px solid #b8d4f0; padding: 16px 20px; border-radius: 6px; margin: 16px 0; }
+  .summary-box p { margin: 4px 0; font-size: 13px; }
+  .summary-box b { color: #1a3a6b; }
+  footer { margin-top: 50px; padding-top: 20px; border-top: 1px solid #ddd; color: #666; font-size: 12px; text-align: center; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>住環境ジャパン様 SFA/CRM構築 プロジェクト</h1>
+  <div class="meta">
+    株式会社剣 ／ 提案日：2026-06-24
+  </div>
+</header>
+
+<div class="summary-box">
+  <p><b>基本方針：</b>Goofy提案（約6ヶ月）より大幅に短縮、かつ「作って終わり」ではなく実装まで伴走</p>
+  <p><b>体制：</b>住田（PM）／ 荒谷CTO（技術統括）／ 本山（開発責任者・実装）／ 吉田（IS・進行管理）／ 塩田（契約・経理）</p>
+</div>
+
+<h2>ドキュメント</h2>
+
+<a class="doc-card" href="./01_ヒアリングシート_住環境ジャパン_20260624.html">
+  <span class="arrow">→</span>
+  <h3>01. ヒアリングシート</h3>
+  <p>初回ヒアリング（30〜60分・1回）で確認したい論点を整理</p>
+</a>
+
+<a class="doc-card" href="./02_ガントチャート_住環境ジャパン_20260624.html">
+  <span class="arrow">→</span>
+  <h3>02. プロジェクトスケジュール（ガントチャート）</h3>
+  <p>約4ヶ月の実装ロードマップ＋運用伴走</p>
+</a>
+
+<h2>スケジュールサマリ</h2>
+<table>
+  <tr><th>Phase</th><th>期間</th><th>内容</th></tr>
+  <tr><td>Phase 0：営業フェーズ</td><td>6/24 〜 7/1（1週間）</td><td>ヒアリング → 提案 → 契約締結</td></tr>
+  <tr><td>Phase 1：要件定義・設計</td><td>7/11 〜 7/24（2週間）</td><td>ツール最終選定／データ移行設計／要件定義書</td></tr>
+  <tr><td>Phase 2：CRM/SFA基盤構築</td><td>7/25 〜 8/24（1ヶ月）</td><td>CRM基盤実装／OB顧客データ移行／API連携</td></tr>
+  <tr><td>Phase 3：MA・自動化実装</td><td>8/25 〜 10/9（1.5ヶ月）</td><td>掘り起こしシナリオ／MA自動配信／営業録音同意管理</td></tr>
+  <tr><td>Phase 4：AI活用機能</td><td>10/10 〜 11/9（1ヶ月）</td><td>営業録音分析／勝ちパターン抽出／提案サジェスト</td></tr>
+  <tr><td>Phase 5：運用伴走</td><td>11/10 〜 継続</td><td>月次定例／改善PDCA／AI研修と連動</td></tr>
+</table>
+
+<h2>Goofy案との比較</h2>
+<table>
+  <tr><th>項目</th><th>Goofy案</th><th>剣案</th></tr>
+  <tr><td>全体期間</td><td>約6ヶ月（構築のみ）</td><td>約4ヶ月（構築）+ 運用伴走（継続）</td></tr>
+  <tr><td>初期費</td><td>300〜1,000万円</td><td>スコープ次第で大幅圧縮</td></tr>
+  <tr><td>主軸ツール</td><td>Salesforce前提</td><td>要件適合性で再選定（HubSpot/kintone等も検討）</td></tr>
+  <tr><td>AI活用設計</td><td>基盤整備 → 後追いでAI活用</td><td>最初からAI前提で設計</td></tr>
+  <tr><td>仲介マージン</td><td>リプ経由のコンサル費が発生</td><td>直接対応（中抜きなし）</td></tr>
+  <tr><td>納品後の運用</td><td>基本的に構築完了で終了</td><td>月次定例・AI研修と連動した継続伴走</td></tr>
+</table>
+
+<h2>連絡先</h2>
+<p>
+<b>株式会社剣</b><br>
+代表取締役：住田 隆真<br>
+本社：東京都渋谷区桜丘町31-14 SLACK SHIBUYA 301
+</p>
+
+<footer>
+  © 2026 株式会社剣
+</footer>
+
+</body>
+</html>
